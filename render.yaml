@@ -1,0 +1,38 @@
+services:
+  - type: web
+    name: solariq-backend
+    runtime: docker
+    dockerContext: ./backend
+    dockerfilePath: ./backend/Dockerfile
+    plan: free
+    envVars:
+      - key: DB_HOST
+        fromDatabase:
+          name: solariq-db
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: solariq-db
+          property: port
+      - key: DB_NAME
+        fromDatabase:
+          name: solariq-db
+          property: database
+      - key: DB_USERNAME
+        fromDatabase:
+          name: solariq-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: solariq-db
+          property: password
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: ADMIN_USERNAME
+        value: admin
+      - key: ADMIN_PASSWORD
+        sync: false
+
+databases:
+  - name: solariq-db
+    plan: free
