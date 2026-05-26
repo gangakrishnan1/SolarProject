@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const client = axios.create({
-  baseURL: '/api/v1',
+  baseURL: 'https://solariq-backend-wcw6.onrender.com/api/v1',
   timeout: 30000,
 });
 
